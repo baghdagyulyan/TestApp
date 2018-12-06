@@ -20,7 +20,9 @@ class DetailViewController: UIViewController {
     private let descriptionCellReuseIdentifier = "DescriptionCell"
     private var saveMode : SaveMode!
     private var tmpSaveMode : SaveMode!
-    
+    private let labelPadding = CGFloat(30.0)
+    private let fontSize = CGFloat(18.0)
+
     convenience init(article: Article, saveMode: SaveMode) {
         self.init()
         self.article = article
@@ -68,19 +70,19 @@ class DetailViewController: UIViewController {
         var height4 = CGFloat(0)
         
         if article.author != nil {
-            height1 = CGFloat((article.author?.heightWithConstrainedWidth(width: self.view.frame.size.width - 30, font: UIFont.systemFont(ofSize: 18)))!) + 20.0
+            height1 = CGFloat((article.author?.heightWithConstrainedWidth(width: self.view.frame.size.width - labelPadding, font: UIFont.systemFont(ofSize: fontSize)))!) + labelPadding
         }
         
         if article.title != nil {
-            height2 = CGFloat((article.title?.heightWithConstrainedWidth(width: self.view.frame.size.width - 30, font: UIFont.systemFont(ofSize: 18)))!) + 20.0
+            height2 = CGFloat((article.title?.heightWithConstrainedWidth(width: self.view.frame.size.width - labelPadding, font: UIFont.systemFont(ofSize: fontSize)))!) + labelPadding
         }
         
         if article.desc != nil {
-            height3 = CGFloat((article.desc?.heightWithConstrainedWidth(width: self.view.frame.size.width - 30, font: UIFont.systemFont(ofSize: 18)))!) + 20.0
+            height3 = CGFloat((article.desc?.heightWithConstrainedWidth(width: self.view.frame.size.width - labelPadding, font: UIFont.systemFont(ofSize: fontSize)))!) + labelPadding
         }
         
         if article.content != nil {
-            height4 = CGFloat((article.content?.heightWithConstrainedWidth(width: self.view.frame.size.width - 30, font: UIFont.systemFont(ofSize: 18)))!) + 20.0
+            height4 = CGFloat((article.content?.heightWithConstrainedWidth(width: self.view.frame.size.width - labelPadding, font: UIFont.systemFont(ofSize: fontSize)))!) + labelPadding
         }
         
         heightOfRows = [0: height1, 1: height2, 2: height3, 3: height4] 

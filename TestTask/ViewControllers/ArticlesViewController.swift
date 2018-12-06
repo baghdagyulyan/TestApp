@@ -170,5 +170,23 @@ extension ArticlesViewController: UITableViewDelegate, UITableViewDataSource {
         return 100.0
     }
 
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return self.segmentedControl.selectedSegmentIndex != 0
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if (editingStyle == .delete) {
+            let results = RealmManager.sharedManager.getObjects(type: Article.self)
+            let article = self.articles[indexPath.row]
+            for result in results! {
+                if (result as! Article).title ==  article?.title {
+                    RealmManager.sharedManager.deleteObject(objs: result)
+                    self.loadSavedNews()
+                    break
+                }
+            }
+            // handle delete (by removing the data from your array and updating the tableview)
+        }
+    }
 }
 
