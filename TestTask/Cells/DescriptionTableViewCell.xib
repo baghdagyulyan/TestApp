@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="KGk-i7-Jjw" customClass="DescriptionTableViewCell" customModule="TestTask" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nrC-Fc-enP">
+                        <rect key="frame" x="0.0" y="39.5" width="320" height="2"/>
+                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="2" id="seb-D8-zNN"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="l8H-ZW-aAd"/>
+                    </view>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K68-A0-KCl">
+                        <rect key="frame" x="15" y="10" width="290" height="23.5"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="K68-A0-KCl" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="Ipk-um-wkW"/>
+                    <constraint firstItem="K68-A0-KCl" firstAttribute="width" secondItem="H2p-sc-9uM" secondAttribute="width" constant="-30" id="dpQ-bb-c9c"/>
+                    <constraint firstAttribute="bottom" secondItem="nrC-Fc-enP" secondAttribute="bottom" constant="2" id="hxA-XJ-7fW"/>
+                    <constraint firstItem="K68-A0-KCl" firstAttribute="height" secondItem="H2p-sc-9uM" secondAttribute="height" constant="-20" id="iBg-zG-Z0a"/>
+                    <constraint firstItem="nrC-Fc-enP" firstAttribute="width" secondItem="H2p-sc-9uM" secondAttribute="width" id="iNq-cI-hww"/>
+                    <constraint firstItem="nrC-Fc-enP" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="pEK-eX-Np1"/>
+                    <constraint firstItem="K68-A0-KCl" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="r7D-wc-n7E"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="descriptionTextLabel" destination="K68-A0-KCl" id="LaF-67-cOu"/>
+            </connections>
+        </tableViewCell>
+    </objects>
+</document>

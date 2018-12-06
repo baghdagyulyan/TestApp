@@ -90,6 +90,7 @@ class ArticlesViewController: UIViewController {
 }
 
 extension ArticlesViewController: UITableViewDelegate, UITableViewDataSource {
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: articleCellReuseIdentifier, for: indexPath) as! ArticleTableViewCell
         if (tableView.indexPathsForVisibleRows!.contains(indexPath)) {
@@ -111,6 +112,18 @@ extension ArticlesViewController: UITableViewDelegate, UITableViewDataSource {
         return cell
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        
+        let article = self.articles[indexPath.row]
+        
+
+        var isSaveMode = true
+
+        let detailViewController = DetailViewController.init(article: article!, saveMode: isSaveMode ? .unSave : .save)
+        self.navigationController?.pushViewController(detailViewController, animated: true)
+        
+    }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.articles.count
