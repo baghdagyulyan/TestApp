@@ -132,7 +132,7 @@
 		3E1A4BAA21B879350083E5F4 /* TestTask */ = {
 			isa = PBXGroup;
 			children = (
-				3E1FD83521B930AF00796D0B /* Utils */,
+				3E1FD83521B930AF00796D0B /* Extensions */,
 				3E1FD82E21B9046A00796D0B /* Cells */,
 				3E1FD82D21B8FB3900796D0B /* ViewControllers */,
 				3E1FD82821B8EB4D00796D0B /* DataLayer */,
@@ -193,12 +193,12 @@
 			path = Cells;
 			sourceTree = "<group>";
 		};
-		3E1FD83521B930AF00796D0B /* Utils */ = {
+		3E1FD83521B930AF00796D0B /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
 				3E1FD83621B930D400796D0B /* Utils.swift */,
 			);
-			path = Utils;
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		874CF9A1478BEE6894FA745A /* Frameworks */ = {

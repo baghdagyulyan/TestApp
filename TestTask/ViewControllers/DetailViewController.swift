@@ -39,6 +39,11 @@ class DetailViewController: UIViewController {
     
     // MARK:  updating db befor view will disappear
     override func viewWillDisappear(_ animated: Bool) {
+       self.saveOrUnsaveArticle()
+    }
+    
+    // MARK:  saving or unsaving article
+    func saveOrUnsaveArticle() {
         guard self.tmpSaveMode != self.saveMode else {
             return
         }
