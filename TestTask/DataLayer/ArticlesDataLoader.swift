@@ -11,8 +11,8 @@ import Foundation
 typealias CompletionHandler = ([Article?]?, Error?) -> Void
 
 class ArticleDataLoader {
-    private let baseURL = "https://newsapi.org/v2/top-headlines"
-    private let apiKey = "2eef6ca9d9ac4fd6bca3bd7511a71513"
+    private let baseURL = "https://newsapi.org/v2/top-headlines" // base url
+    private let apiKey = "2eef6ca9d9ac4fd6bca3bd7511a71513" // API key from registration
     var articles = [Article?]()
     private var url: String? {
         get {
