@@ -60,6 +60,8 @@ class ArticlesViewController: UIViewController {
         segmentedControl.addTarget(self, action: #selector(tabChanged(_:)), for: .valueChanged)
         segmentedControl.selectedSegmentIndex = 0
         segmentedControl.frame = CGRect(x: 0, y: 0, width: self.view.frame.size.height, height: segmentedControllHeight)
+        segmentedControl.autoresizingMask = [.flexibleWidth]
+
         self.view.addSubview(segmentedControl)
     }
     
@@ -176,16 +178,31 @@ extension ArticlesViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if (editingStyle == .delete) {
-            let results = RealmManager.sharedManager.getObjects(type: Article.self)
-            let article = self.articles[indexPath.row]
-            for result in results! {
-                if (result as! Article).title ==  article?.title {
-                    RealmManager.sharedManager.deleteObject(objs: result)
-                    self.loadSavedNews()
-                    break
-                }
-            }
-            // handle delete (by removing the data from your array and updating the tableview)
+            let alert = UIAlertController(title: "Warning!", message: "Are you sure to delete this article?", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+            alert.addAction(UIAlertAction(title: "Delete", style: .destructive, handler: { action in
+                switch action.style {
+                case .default:
+                    print("default")
+                    
+                case .cancel:
+                    print("cancel")
+                    
+                case .destructive:
+                    print("destructive")
+                    let results = RealmManager.sharedManager.getObjects(type: Article.self)
+                    let article = self.articles[indexPath.row]
+                    for result in results! {
+                        if (result as! Article).title ==  article?.title {
+                            RealmManager.sharedManager.deleteObject(objs: result)
+                            self.loadSavedNews()
+                            break
+                        }
+                    }
+                    
+                    
+                }}))
+            self.present(alert, animated: true, completion: nil)
         }
     }
 }
