@@ -25,6 +25,7 @@
 		3E1FD83721B930D400796D0B /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E1FD83621B930D400796D0B /* Utils.swift */; };
 		3E1FD83A21B9317700796D0B /* DescriptionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E1FD83821B9317700796D0B /* DescriptionTableViewCell.swift */; };
 		3E1FD83B21B9317700796D0B /* DescriptionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3E1FD83921B9317700796D0B /* DescriptionTableViewCell.xib */; };
+		3E1FD83D21B93A8100796D0B /* RealmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E1FD83C21B93A8100796D0B /* RealmManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -71,6 +72,7 @@
 		3E1FD83621B930D400796D0B /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		3E1FD83821B9317700796D0B /* DescriptionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescriptionTableViewCell.swift; sourceTree = "<group>"; };
 		3E1FD83921B9317700796D0B /* DescriptionTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DescriptionTableViewCell.xib; sourceTree = "<group>"; };
+		3E1FD83C21B93A8100796D0B /* RealmManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmManager.swift; sourceTree = "<group>"; };
 		3EE8C66EE11B18233E6069F0 /* Pods-TestTask.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TestTask.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TestTask/Pods-TestTask.debug.xcconfig"; sourceTree = "<group>"; };
 		7BE8DF44F6F180734B078B92 /* Pods_TestTaskTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TestTaskTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		88BA90CDAA020E65C73C99B0 /* Pods-TestTask.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TestTask.release.xcconfig"; path = "Pods/Target Support Files/Pods-TestTask/Pods-TestTask.release.xcconfig"; sourceTree = "<group>"; };
@@ -166,6 +168,7 @@
 			children = (
 				3E1FD82921B8EB7500796D0B /* Article.swift */,
 				3E1FD82B21B8EF0200796D0B /* ArticlesDataLoader.swift */,
+				3E1FD83C21B93A8100796D0B /* RealmManager.swift */,
 			);
 			path = DataLayer;
 			sourceTree = "<group>";
@@ -458,6 +461,7 @@
 				3E1A4BAE21B879350083E5F4 /* ArticlesViewController.swift in Sources */,
 				3E1A4BAC21B879350083E5F4 /* AppDelegate.swift in Sources */,
 				3E1FD83721B930D400796D0B /* Utils.swift in Sources */,
+				3E1FD83D21B93A8100796D0B /* RealmManager.swift in Sources */,
 				3E1FD83421B92D0D00796D0B /* DetailViewController.swift in Sources */,
 				3E1FD82A21B8EB7500796D0B /* Article.swift in Sources */,
 				3E1FD82C21B8EF0200796D0B /* ArticlesDataLoader.swift in Sources */,

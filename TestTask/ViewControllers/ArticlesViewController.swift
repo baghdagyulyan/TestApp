@@ -18,18 +18,18 @@ class ArticlesViewController: UIViewController {
     private let segmentedControllHeight = CGFloat(50.0)
     private let articleCellReuseIdentifier = "ArticleCell"
 
-
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = Bundle.main.infoDictionary![kCFBundleNameKey as String] as? String // dynamically read app name from budle
         self.setUp()
     }
-    
+    // MARK: setup all stuff
     func setUp() {
         self.setUpDataLoader()
         self.setUpTableView()
         self.setUpSegmentedControll()
     }
+    
     // MARK: configure data loader
     func setUpDataLoader() {
         articlesLoader = ArticleDataLoader()
@@ -63,25 +63,54 @@ class ArticlesViewController: UIViewController {
         self.view.addSubview(segmentedControl)
     }
     
+    // MARK:  reload table views
+    override func viewWillAppear(_ animated: Bool) {
+        if segmentedControl.selectedSegmentIndex == 0 {
+            self.loadNews()
+        } else {
+            self.loadSavedNews()
+        }
+    }
+    
     override func viewDidAppear(_ animated: Bool) {
         segmentedControl.frame = CGRect(x: 0, y: self.view.safeAreaInsets.top, width: self.view.frame.size.width, height: segmentedControllHeight)
         articlesTableView.frame = CGRect(x: 0, y: segmentedControl.frame.maxY, width: self.view.frame.size.width, height: self.view.frame.size.height - segmentedControl.frame.maxY - self.view.safeAreaInsets.bottom)
     }
     
-    @objc func tabChanged(_ sender: UISegmentedControl) {
-        switch sender.selectedSegmentIndex {
-        case 0:
-            articlesLoader.loadDada { (articles, error) in
-                if (articles != nil) {
-                    self.articles = articles!
-                } else {
-                    self.articles.removeAll()
-                }
+    // MARK: load news from server or cache
+    func loadNews() {
+        articlesLoader.loadDada { (articles, error) in
+            if (articles != nil) {
+                self.articles = articles!
+            } else {
+                self.articles.removeAll()
             }
             DispatchQueue.main.async {
                 self.articlesTableView.reloadData()
             }
-           
+        }
+    }
+    
+    // MARK: load news from db
+    func loadSavedNews() {
+        let results = RealmManager.sharedManager.getObjects(type: Article.self)
+        articles.removeAll()
+        
+        for result in results! {
+            articles.append((result as! Article))
+        }
+        DispatchQueue.main.async {
+            self.articlesTableView.reloadData()
+        }
+    }
+
+    // MARK: handle segmented tabs change
+    @objc func tabChanged(_ sender: UISegmentedControl) {
+        switch sender.selectedSegmentIndex {
+        case 0:
+            self.loadNews()
+        case 1:
+            self.loadSavedNews()
         default:
             break
         }
@@ -89,6 +118,7 @@ class ArticlesViewController: UIViewController {
     }
 }
 
+// MARK: UITableView DataSource and UITableView Delegate
 extension ArticlesViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -116,10 +146,17 @@ extension ArticlesViewController: UITableViewDelegate, UITableViewDataSource {
         tableView.deselectRow(at: indexPath, animated: true)
         
         let article = self.articles[indexPath.row]
+
+        let results = RealmManager.sharedManager.getObjects(type: Article.self)
+        //        articles.removeAll()
         
-
         var isSaveMode = true
-
+        for result in results! {
+            if (result as! Article).title ==  article?.title{
+                isSaveMode = false
+            }
+        }
+        
         let detailViewController = DetailViewController.init(article: article!, saveMode: isSaveMode ? .unSave : .save)
         self.navigationController?.pushViewController(detailViewController, animated: true)
         

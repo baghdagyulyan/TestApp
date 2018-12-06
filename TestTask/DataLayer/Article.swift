@@ -12,12 +12,12 @@ import RealmSwift
 // class for main news type
 
 class Article: Object {
-    @objc private(set) dynamic var author: String?
-    @objc private(set) dynamic var title: String?
-    @objc private(set) dynamic var desc: String?
-    @objc private(set) dynamic var urlToImage: String?
-    @objc private(set) dynamic var content: String?
-    @objc private(set) dynamic var publicDate: String?
+    @objc private(set) dynamic var author: String? // author of article
+    @objc private(set) dynamic var title: String? // title of article
+    @objc private(set) dynamic var desc: String? // description of article
+    @objc private(set) dynamic var urlToImage: String? // url of article image
+    @objc private(set) dynamic var content: String? // content of article
+    @objc private(set) dynamic var publicDate: String? // publishing date  of article
     
     convenience init(json: [String : Any]) {
         self.init()
@@ -32,6 +32,7 @@ class Article: Object {
         let publishDate = dateFormatter.date(from:dateStr!)!
         let currentDate = Date()
         
+        // converting publishing date to string, show time (days, hours and minutes) difference till now
         let components = Calendar.current.dateComponents([.day, .hour, .minute], from: publishDate, to: currentDate)
         if components.day! == 1 {
             publicDate = "\(components.day!) day"

@@ -13,7 +13,7 @@ typealias CompletionHandler = ([Article?]?, Error?) -> Void
 class ArticleDataLoader {
     private let baseURL = "https://newsapi.org/v2/top-headlines" // base url
     private let apiKey = "2eef6ca9d9ac4fd6bca3bd7511a71513" // API key from registration
-    var articles = [Article?]()
+    var articles = [Article?]() // loaded articles array
     private var url: String? {
         get {
             return String(format: "\(baseURL)?country=us&apiKey=\(apiKey)")
