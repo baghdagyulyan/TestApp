@@ -9,7 +9,7 @@
 import Foundation
 import RealmSwift
 
-//class for main news type
+// class for main news type
 
 class Article: Object {
     @objc private(set) dynamic var author: String?

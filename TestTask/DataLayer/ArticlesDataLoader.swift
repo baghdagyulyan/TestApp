@@ -20,21 +20,21 @@ class ArticleDataLoader {
         }
     }
     
-    // function for getting Articles array from json
+    // MARK: function for getting Articles array from json
     static func newArticles(articles:[[String : AnyObject]]) -> [Article?] {
         return articles.map{ element in
             return Article.init(json: element)
         }
     }
     
-    // session configuration load from cahce or not
+    // MARK: session configuration load from cahce or not
     static func configureSession() -> URLSession {
         let config = URLSessionConfiguration.default
         config.requestCachePolicy = .returnCacheDataElseLoad
         return URLSession.init(configuration: config)
     }
     
-    // load data from server
+    // MARK: load data from server
     func loadDada(completion: @escaping CompletionHandler) {
         DispatchQueue.global().async {
             let requestUrl = URL(string: self.url!)
